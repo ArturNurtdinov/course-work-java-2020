@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.GroupController">
+    <children>
+        <Button layoutX="288.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleOk" text="Ok"/>
+        <Button layoutX="334.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel"/>
+        <Label fx:id="idLabel" layoutX="65.0" layoutY="48.0" text="Введите id:"/>
+        <Label fx:id="nameLabel" layoutX="24.0" layoutY="92.0" text="Введите название:"/>
+        <TextField fx:id="idField" layoutX="139.0" layoutY="44.0"/>
+        <TextField fx:id="nameField" layoutX="139.0" layoutY="88.0"/>
+    </children>
+</AnchorPane>

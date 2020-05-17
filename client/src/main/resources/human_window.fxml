@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HumanController">
+    <children>
+        <Button layoutX="288.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleOk" text="Ok" />
+        <Button layoutX="334.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+        <Label fx:id="idLabel" layoutX="71.0" layoutY="28.0" text="Введите id:" />
+        <Label fx:id="firstNameLabel" layoutX="57.0" layoutY="63.0" text="Введите имя:" />
+        <TextField fx:id="idField" layoutX="139.0" layoutY="24.0" />
+        <TextField fx:id="firstNameField" layoutX="139.0" layoutY="59.0" />
+      <Label fx:id="lastNameLabel" layoutX="29.0" layoutY="96.0" text="Введите фамилию:" />
+      <Label fx:id="fatherNameLabel" layoutX="31.0" layoutY="134.0" text="Введите отчество:" />
+      <TextField fx:id="lastNameField" layoutX="140.0" layoutY="92.0" />
+      <TextField fx:id="fatherNameField" layoutX="139.0" layoutY="130.0" />
+      <Label fx:id="groupLabel" layoutX="32.0" layoutY="173.0" text="Выберите группу:" />
+      <ChoiceBox fx:id="groupBox" layoutX="140.0" layoutY="169.0" prefWidth="150.0" />
+      <Label fx:id="typeLabel" layoutX="41.0" layoutY="212.0" text="Выберите тип:" />
+      <ChoiceBox fx:id="typeBox" layoutX="140.0" layoutY="208.0" prefWidth="150.0" />
+      <Button fx:id="addGroupButton" layoutX="294.0" layoutY="169.0" mnemonicParsing="false" onAction="#addGroup" text="+" />
+      <Button fx:id="refreshGroupsButton" layoutX="325.0" layoutY="169.0" mnemonicParsing="false" onAction="#refreshGroups" text="Обновить" />
+    </children>
+</AnchorPane>
