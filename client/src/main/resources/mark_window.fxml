@@ -8,9 +8,8 @@
     <Button layoutX="288.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleOk" text="Ok" />
     <Button layoutX="334.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
     <Label fx:id="idLabel" layoutX="71.0" layoutY="28.0" text="Введите id:" />
-    <Label fx:id="valueLabel" layoutX="41.0" layoutY="63.0" text="Введите оценку:" />
+    <Label fx:id="valueLabel" layoutX="31.0" layoutY="63.0" text="Выберите оценку:" />
     <TextField fx:id="idField" layoutX="139.0" layoutY="24.0" />
-    <TextField fx:id="valueField" layoutX="139.0" layoutY="59.0" />
     <Label fx:id="subjectLabel" layoutX="27.0" layoutY="98.0" text="Выберите предмет:" />
     <ChoiceBox fx:id="subjectBox" layoutX="139.0" layoutY="94.0" prefWidth="150.0" />
     <Button fx:id="addSubjectButton" layoutX="292.0" layoutY="94.0" mnemonicParsing="false" onAction="#addSubject" text="+" />
@@ -23,5 +22,6 @@
     <Button fx:id="refreshStudentsButton" layoutX="325.0" layoutY="167.0" mnemonicParsing="false" onAction="#refreshStudents" text="Обновить" />
     <Label fx:id="teacherLabel" layoutX="56.0" layoutY="135.0" text="Кто поставил:" />
     <Label fx:id="studentLabel" layoutX="86.0" layoutY="171.0" text="Студент:" />
+      <ChoiceBox fx:id="valueBox" layoutX="139.0" layoutY="59.0" prefWidth="150.0" />
 </children>
 </AnchorPane>

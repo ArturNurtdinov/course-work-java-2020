@@ -30,7 +30,7 @@ public class MarkController {
     @FXML
     private TextField idField;
     @FXML
-    private TextField valueField;
+    private ChoiceBox<String> valueBox;
 
     @FXML
     private ChoiceBox<Subject> subjectBox;
@@ -56,6 +56,8 @@ public class MarkController {
     public void provideApp(App app, Operation operation) {
         this.app = app;
         this.operation = operation;
+
+        valueBox.getItems().addAll("-", "2", "3", "4", "5");
 
         app.getSubjectApi().getSubjects(app.getToken()).subscribe(subjectResponse -> {
             if (subjectResponse.isSuccessful() && subjectResponse.body() != null) {
@@ -85,12 +87,12 @@ public class MarkController {
                 app.getMarkApi().getMarkById(app.getToken(), Long.parseLong(newValue)).subscribe(markResponse -> {
                     if (markResponse.isSuccessful() && markResponse.body() != null) {
                         Mark mark = markResponse.body();
-                        valueField.setText(Integer.toString(mark.getValue()));
+                        valueBox.setValue(Integer.toString(mark.getValue()));
                         subjectBox.setValue(mark.getSubject());
                         teacherBox.setValue(mark.getTeacher());
                         studentBox.setValue(mark.getStudent());
                     } else {
-                        valueField.setText("");
+                        valueBox.setValue(null);
                         subjectBox.setValue(null);
                         teacherBox.setValue(null);
                         studentBox.setValue(null);
@@ -118,12 +120,12 @@ public class MarkController {
     private void handleOk() {
         switch (operation) {
             case ADD:
-                if (valueField.getText().isEmpty() || subjectBox.getValue() == null || teacherBox.getValue() == null || studentBox.getValue() == null) {
+                if (valueBox.getValue() == null || subjectBox.getValue() == null || teacherBox.getValue() == null || studentBox.getValue() == null) {
                     app.showErrorAlert("Please fill all fields.");
                 } else {
                     try {
                         app.getMarkApi().addMark(app.getToken(), new Mark(studentBox.getValue(), teacherBox.getValue(), subjectBox.getValue(),
-                                Integer.parseInt(valueField.getText()))).subscribe(response -> {
+                                Integer.parseInt(valueBox.getValue()))).subscribe(response -> {
                             if (response.isSuccessful() && response.body() != null) {
                                 app.refreshData();
                                 app.closeMarkWindow();
@@ -156,13 +158,13 @@ public class MarkController {
                 }
                 break;
             case UPDATE:
-                if (valueField.getText().isEmpty() || subjectBox.getValue() == null || teacherBox.getValue() == null || studentBox.getValue() == null) {
+                if (valueBox.getValue() == null || subjectBox.getValue() == null || teacherBox.getValue() == null || studentBox.getValue() == null) {
                     app.showErrorAlert("Please fill all fields.");
                 } else {
                     try {
                         long id = Long.parseLong(idField.getText());
                         app.getMarkApi().updateMark(app.getToken(), id, new Mark(id, studentBox.getValue(), teacherBox.getValue(), subjectBox.getValue(),
-                                Integer.parseInt(valueField.getText()))).subscribe(response -> {
+                                Integer.parseInt(valueBox.getValue()))).subscribe(response -> {
                             if (response.isSuccessful()) {
                                 app.refreshData();
                                 app.closeMarkWindow();
@@ -236,7 +238,7 @@ public class MarkController {
 
     private void showContentFields(boolean state) {
         valueLabel.setVisible(state);
-        valueField.setVisible(state);
+        valueBox.setVisible(state);
 
         subjectLabel.setVisible(state);
         subjectBox.setVisible(state);
